@@ -11,9 +11,7 @@ spec:
   - protocol: TCP
     port: 8080
     nodePort: 30001
-
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,7 +32,7 @@ spec:
     spec:
       containers:
       - name: train-schedule
-        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        image: pallu24/train-schedule:latest
         ports:
         - containerPort: 8080
         livenessProbe:
