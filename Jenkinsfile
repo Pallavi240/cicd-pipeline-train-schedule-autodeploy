@@ -7,8 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                bat 'gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+                bat 'npm install'
             }
         }
         stage('Build Docker Image') {
@@ -18,9 +17,6 @@ pipeline {
             steps {
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
-                    app.inside {
-                        bat 'echo Hello, World!'
-                    }
                 }
             }
         }
